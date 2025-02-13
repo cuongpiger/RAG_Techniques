@@ -7,7 +7,10 @@ from langchain import PromptTemplate
 from openai import RateLimitError
 from typing import List
 from rank_bm25 import BM25Okapi
-import fitz
+
+
+
+import pymupdf
 import asyncio
 import random
 import textwrap
@@ -234,7 +237,7 @@ def read_pdf_to_string(path):
     extract the text content from each page, and append it to a single string.
     """
     # Open the PDF document located at the specified path
-    doc = fitz.open(path)
+    doc = pymupdf.open(path)
     content = ""
     # Iterate over each page in the document
     for page_num in range(len(doc)):
